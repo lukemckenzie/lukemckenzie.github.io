@@ -234,6 +234,11 @@ ul {
   color: var(--accent-ink);
 }
 
+.icon {
+  display: inline-block;
+  flex: 0 0 auto;
+}
+
 .hero-grid {
   display: grid;
   grid-template-columns: 1.4fr 0.8fr;
@@ -290,6 +295,7 @@ ul {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: var(--space-2);
   min-height: 44px;
   padding: 0 1rem;
   border-radius: 999px;
@@ -325,6 +331,11 @@ ul {
 
 .btn:focus-visible {
   box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+.icon-btn {
+  width: 16px;
+  height: 16px;
 }
 
 .mini-list {
@@ -453,6 +464,23 @@ ul {
 .price-card h3,
 .step h3 {
   margin-bottom: var(--space-2);
+}
+
+.step-head {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.step-head h3 {
+  margin-bottom: 0;
+}
+
+.step-head .icon {
+  width: 18px;
+  height: 18px;
+  color: var(--accent-ink);
+  opacity: 0.95;
 }
 
 .check-list {
