@@ -241,7 +241,27 @@ ul {
   align-items: start;
 }
 
+.hero {
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -120px -80px;
+  background:
+    radial-gradient(
+      600px circle at 30% 40%,
+      rgba(46, 211, 198, 0.08),
+      transparent 60%
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
 .hero .card {
+  position: relative;
+  z-index: 1;
   padding: var(--card-pad-lg);
 }
 
