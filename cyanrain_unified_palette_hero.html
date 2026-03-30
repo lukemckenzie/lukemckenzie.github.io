@@ -1,0 +1,488 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playwrite+England+Joined:wght@100;400&family=Hedvig+Letters+Sans:opsz@12..24&display=swap');
+
+  :root {
+    --bg: #c0d8d8;
+    --bg-alt: #b0cece;
+    --border: #9bbfbf;
+    --black: #363133;
+    --black-fade: #3d3d40;
+    --gray: #758286;
+    --cyan: #169083;
+    --cyan-dark: #26635e;
+    --cyan-light: #c0d8d8;
+    --text: #363133;
+    --text-fade: #758286;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .frame {
+    background: var(--bg);
+    font-family: 'Hedvig Letters Sans', sans-serif;
+    color: var(--text);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 2.5rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+    position: relative;
+    z-index: 10;
+  }
+
+  .nav-name {
+    font-family: 'Playwrite England Joined', cursive;
+    font-size: 15px;
+    color: var(--cyan-dark);
+    letter-spacing: 0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    color: var(--text-fade);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: color 0.15s;
+  }
+
+  .nav-links a:hover { color: var(--cyan-dark); }
+  .nav-links a.active {
+    color: var(--text);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 460px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-image-col {
+    position: relative;
+    overflow: hidden;
+    min-height: 460px;
+  }
+
+  .hero-image-col img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  .hero-fade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      transparent 50%,
+      #c0d8d8 88%,
+      #c0d8d8 100%
+    );
+  }
+
+  .hero-fade-bottom {
+    display: none;
+  }
+
+  .hero-copy-col {
+    padding: 3.5rem 2.5rem 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--cyan);
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-headline {
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--black);
+    font-weight: 400;
+    margin-bottom: 1rem;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--cyan-dark);
+  }
+
+  .hero-body {
+    font-size: 13.5px;
+    line-height: 1.75;
+    color: var(--text-fade);
+    margin-bottom: 2rem;
+  }
+
+  .shelf-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.95rem 0;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .shelf-item:first-of-type { border-top: 1px solid var(--border); }
+
+  .shelf-label {
+    font-size: 13px;
+    color: var(--text);
+    letter-spacing: 0.01em;
+  }
+
+  .shelf-arrow {
+    font-size: 14px;
+    color: var(--text-fade);
+    transition: transform 0.2s;
+    display: inline-block;
+  }
+
+  .shelf-item:hover .shelf-label { color: var(--cyan-dark); }
+  .shelf-item:hover .shelf-arrow { transform: translateX(3px); color: var(--cyan); }
+  .shelf-item.open .shelf-arrow { transform: rotate(90deg); color: var(--cyan); }
+
+  .shelf-expand {
+    font-size: 12.5px;
+    color: var(--text-fade);
+    line-height: 1.75;
+    padding: 0.75rem 0 1rem;
+    border-bottom: 1px solid var(--border);
+    display: none;
+  }
+
+  .shelf-expand.visible { display: block; }
+
+  .contact-section {
+    padding: 3.5rem 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .contact-left h2 {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--black);
+    margin-bottom: 0.75rem;
+  }
+
+  .contact-left p {
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--text-fade);
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-faq {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .faq-item {
+    font-size: 12.5px;
+    color: var(--text-fade);
+    line-height: 1.6;
+    padding-left: 0.75rem;
+    border-left: 2px solid var(--border);
+  }
+
+  .faq-q {
+    color: var(--black);
+    font-size: 12.5px;
+    margin-bottom: 0.2rem;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .form-row label {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--gray);
+    text-transform: uppercase;
+  }
+
+  .form-row input,
+  .form-row textarea,
+  .form-row select {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--border);
+    padding: 0.5rem 0;
+    font-size: 13.5px;
+    font-family: 'Hedvig Letters Sans', sans-serif;
+    color: var(--black);
+    outline: none;
+    width: 100%;
+    transition: border-color 0.15s;
+  }
+
+  .form-row input:focus,
+  .form-row textarea:focus,
+  .form-row select:focus {
+    border-bottom-color: var(--cyan);
+  }
+
+  .form-row textarea {
+    resize: none;
+    height: 80px;
+  }
+
+  .form-row select option { background: var(--bg); }
+
+  .submit-btn {
+    align-self: flex-start;
+    margin-top: 0.5rem;
+    background: var(--black);
+    color: var(--cyan-light);
+    border: none;
+    padding: 0.65rem 1.5rem;
+    font-family: 'Hedvig Letters Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background 0.15s;
+  }
+
+  .submit-btn:hover { background: var(--cyan-dark); }
+
+  .site-footer {
+    padding: 1.25rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-note {
+    font-size: 11px;
+    color: var(--gray);
+    letter-spacing: 0.04em;
+  }
+
+  .scroll-hint {
+    font-size: 11px;
+    color: var(--cyan);
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+    transition: color 0.15s;
+  }
+
+  .scroll-hint:hover { color: var(--cyan-dark); }
+
+  ::selection { background: var(--cyan); color: var(--cyan-light); }
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 3px; }
+
+  @media (max-width: 700px) {
+    .hero { grid-template-columns: 1fr; }
+
+    .hero-image-col {
+      min-height: 260px;
+      max-height: 300px;
+    }
+
+    .hero-fade { display: none; }
+
+    .hero-fade-bottom {
+      display: block;
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        transparent 40%,
+        #c0d8d8 100%
+      );
+    }
+
+    .hero-copy-col {
+      padding: 2rem 1.5rem 2rem;
+    }
+
+    .contact-section {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      padding: 2rem 1.5rem;
+    }
+
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.25rem; }
+    .nav-links a { font-size: 12px; }
+  }
+</style>
+
+<div class="frame">
+  <nav>
+    <span class="nav-name">cyan rain</span>
+    <ul class="nav-links">
+      <li><a href="#" class="active">design</a></li>
+      <li><a href="#">content</a></li>
+      <li><a href="#">brand</a></li>
+      <li><a href="#contact" onclick="scrollTo('contact')">contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-image-col">
+      <div style="width:100%;height:100%;background:linear-gradient(135deg,#363133 0%,#3d3d40 40%,#26635e 70%,#169083 100%);opacity:0.85;"></div>
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+        <div style="text-align:center;opacity:0.25;">
+          <div style="font-size:11px;letter-spacing:0.1em;color:#c0d8d8;font-family:'Hedvig Letters Sans',sans-serif;">[ your halftone portrait here ]</div>
+        </div>
+      </div>
+      <div class="hero-fade"></div>
+      <div class="hero-fade-bottom"></div>
+    </div>
+
+    <div class="hero-copy-col">
+      <p class="hero-eyebrow">creative technologies · AXD · AI</p>
+      <h1 class="hero-headline">
+        Designing systems that<br>
+        <em>remove friction</em> from<br>
+        intelligent things.
+      </h1>
+      <p class="hero-body">
+        Cyan Rain is the studio practice of Luke McKenzie — builder, bridge, and occasional agent whisperer out of southwest Michigan.
+      </p>
+
+      <a class="scroll-hint" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+        get in touch ↓
+      </a>
+
+      <div style="margin-top:1.75rem;">
+        <div class="shelf-item" onclick="toggle(this,'offer')">
+          <span class="shelf-label">what i offer</span>
+          <span class="shelf-arrow">›</span>
+        </div>
+        <div class="shelf-expand" id="offer">AX design, local AI installs, brand identity, content systems, and workshops for humans who want to actually understand what's happening.</div>
+
+        <div class="shelf-item" onclick="toggle(this,'expect')">
+          <span class="shelf-label">what you can expect</span>
+          <span class="shelf-arrow">›</span>
+        </div>
+        <div class="shelf-expand" id="expect">Calm, direct communication. Work that fits your actual life. No jargon unless you want it. I show up as a person, not a service.</div>
+
+        <div class="shelf-item" onclick="toggle(this,'asked')">
+          <span class="shelf-label">commonly asked</span>
+          <span class="shelf-arrow">›</span>
+        </div>
+        <div class="shelf-expand" id="asked">Yes I work with small businesses. Yes I can teach kids. No you don't need to know anything going in. That's the whole point.</div>
+
+        <div class="shelf-item" onclick="toggle(this,'about')">
+          <span class="shelf-label">about cyan</span>
+          <span class="shelf-arrow">›</span>
+        </div>
+        <div class="shelf-expand" id="about">Solo studio. Indie dev. Years building things nobody asked for until suddenly everyone needed them. Based near Kalamazoo. On the water.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-section" id="contact">
+    <div class="contact-left">
+      <h2>let's talk.</h2>
+      <p>Whether you're a small business curious about AI, a parent who wants their kid prepared for what's coming, or someone who just wants to understand what any of this actually means — I'm here.</p>
+      <div class="contact-faq">
+        <div class="faq-item">
+          <div class="faq-q">do you work with non-tech businesses?</div>
+          That's most of what I do. No background required.
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">what does an install look like?</div>
+          Usually 1–2 sessions on-site or remote. Flat rate, no retainer required.
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">can you teach younger students?</div>
+          Yes. I adapt to the room. Kids, adults, total beginners.
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <div class="form-row">
+        <label>name</label>
+        <input type="text" placeholder="your name" />
+      </div>
+      <div class="form-row">
+        <label>email</label>
+        <input type="email" placeholder="your email" />
+      </div>
+      <div class="form-row">
+        <label>i'm interested in</label>
+        <select>
+          <option value="">select one</option>
+          <option>AI install for my business</option>
+          <option>teaching / workshop</option>
+          <option>design or brand work</option>
+          <option>content creation</option>
+          <option>just want to chat</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label>message</label>
+        <textarea placeholder="tell me what's going on"></textarea>
+      </div>
+      <button class="submit-btn">send it →</button>
+    </div>
+  </div>
+
+  <div class="site-footer">
+    <span class="footer-note">cyan rain studio · luke@cyanrain.dev</span>
+    <span class="footer-note">kalamazoo, mi · 2026</span>
+  </div>
+</div>
+
+<script>
+function toggle(el, id) {
+  const panel = document.getElementById(id);
+  const isOpen = panel.classList.contains('visible');
+  document.querySelectorAll('.shelf-expand').forEach(p => p.classList.remove('visible'));
+  document.querySelectorAll('.shelf-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) {
+    panel.classList.add('visible');
+    el.classList.add('open');
+  }
+}
+</script>

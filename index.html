@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luke McKenzie — The Claude Whisperer</title>
+  <meta name="description" content="I teach people how to use Claude — from zero to actually useful. In-person, remote, or I'll set it up for your business. Southwest Michigan." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,400&family=Liter&family=Martian+Mono:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="frame">
+
+  <nav>
+    <a class="nav-brand" href="#">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256" class="site-logo" aria-hidden="true">
+        <path d="m9.11 28.62v198h176.6v-93.46l-27.76 26.61-27.76-26.61v62.86h-91.31v-167.4h-29.8z"/>
+        <path d="m69.91 28.62v137.2h30.6v-105l57.18 57.18 58.39-56.98v165.5h31.2v-198h-41.19l-48.6 47.17-47.17-47.17h-40.41z"/>
+      </svg>
+      <span class="nav-name">Luke McKenzie</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">services</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero" id="services">
+    <div class="hero-image-col">
+      <img src="assets/images/hero.png" alt="Luke McKenzie" />
+      <div class="hero-fade"></div>
+      <div class="hero-fade-bottom"></div>
+    </div>
+
+    <div class="hero-copy-col">
+      <p class="hero-eyebrow">The Claude Whisperer · Southwest Michigan</p>
+      <h1 class="hero-headline">
+        Let's get you<br>
+        <em>updated.</em>
+      </h1>
+      <p class="hero-body">
+        I'm Luke. I teach people how to use Claude — from zero to actually useful. Whether you want to learn it yourself or just want it handled, I've got you.
+      </p>
+
+      <a class="scroll-hint" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+        get in touch ↓
+      </a>
+
+      <div style="margin-top:1.75rem;">
+        <div class="shelf-item" onclick="toggle(this,'offer')">
+          <span class="shelf-label">What I Do</span>
+          <span class="shelf-arrow">›</span>
+        </div>
+        <div class="shelf-expand" id="offer">I teach Claude fluency — in person, over Zoom, or in a personalized video built around your situation. I also do full installs for businesses that just want it working without learning the whole thing.</div>
+
+        <div class="shelf-item" onclick="toggle(this,'pricing')">
+          <span class="shelf-label">Services + Pricing</span>
+          <span class="shelf-arrow">›</span>
+        </div>
+        <div class="shelf-expand" id="pricing">
+          <div class="service-line">1:1 session — $150/hr <span class="service-note">($300 floor)</span></div>
+          <div class="service-line">Group workshop — $600 <span class="service-note">(8–10 people)</span></div>
+          <div class="service-line">Phone / Zoom — $100/hr</div>
+          <div class="service-line">Personalized setup video — $100 <span class="service-note">(async, built for you)</span></div>
+          <div class="service-line">Claude install for your business — $850 <span class="service-note">(split payment)</span></div>
+          <div class="service-line">Monthly maintenance — $99/mo</div>
+        </div>
+
+        <div class="shelf-item" onclick="toggle(this,'asked')">
+          <span class="shelf-label">Commonly Asked</span>
+          <span class="shelf-arrow">›</span>
+        </div>
+        <div class="shelf-expand" id="asked">Do I need to know anything going in? No. That's the whole point. Do you work with small businesses? Most of what I do. Can you teach total beginners? Yes. I move at your pace.</div>
+
+        <div class="shelf-item" onclick="toggle(this,'about')">
+          <span class="shelf-label">About Me</span>
+          <span class="shelf-arrow">›</span>
+        </div>
+        <div class="shelf-expand" id="about">I came up with AI tools, not before them — which means I'm not carrying years of habits to unlearn. I'm the person who walked through the door at the right moment and figured out what's actually useful. Based near Kalamazoo, on the water.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-section" id="contact">
+    <div class="contact-left">
+      <h2>Let's talk.</h2>
+      <p>Whether you're a small business that wants Claude set up and running, or someone who just wants to understand what any of this actually means — I'm here. No background required.</p>
+      <div class="contact-faq">
+        <div class="faq-item">
+          <div class="faq-q">Do you work with non-tech people?</div>
+          That's most of what I do. I never make you feel dumb for not knowing.
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What does an install look like?</div>
+          Usually one session on-site or remote. Flat rate. I walk you through everything I built.
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Can you come to my office?</div>
+          Yes. I'm based in Texas Township and work throughout Southwest Michigan.
+        </div>
+      </div>
+    </div>
+
+    <form class="contact-form" action="https://formspree.io/f/mwvrevjl" method="POST">
+      <div class="form-row">
+        <label>Name</label>
+        <input type="text" name="name" placeholder="Name" />
+      </div>
+      <div class="form-row">
+        <label>Email</label>
+        <input type="email" name="email" placeholder="Email" />
+      </div>
+      <div class="form-row">
+        <label>I'm interested in</label>
+        <select name="interest">
+          <option value="">Select one</option>
+          <option>1:1 session (in-person)</option>
+          <option>Group workshop</option>
+          <option>Phone or Zoom session</option>
+          <option>Personalized setup video</option>
+          <option>Claude install for my business</option>
+          <option>Monthly maintenance</option>
+          <option>Just want to chat</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label>message</label>
+        <textarea name="message" placeholder="Tell me all about it"></textarea>
+      </div>
+      <button class="submit-btn" type="submit">Send it →</button>
+    </form>
+  </div>
+
+  <div class="site-footer">
+    <span class="footer-note">Luke Mckenzie · <a href="mailto:luke@cyanrain.dev">luke@cyanrain.dev</a></span>
+    <div class="privacy-trigger">
+      Privacy Policy &amp; Terms
+      <div class="tooltip-card">
+        <p>I don't collect, store, or transmit sensitive data. If you contact me, your message is sent directly to me and isn't stored by any third parties.</p>
+        <p>Your data is yours, mine is mine. All services are provided as-is. I reserve the right to update my terms at any time.</p>
+        <p>Questions? Reach out via the contact form.</p>
+      </div>
+    </div>
+    <span class="footer-note">Texas Township, MI · 2026 · All Rights Reserved</span>
+  </div>
+
+</div>
+
+<script>
+function toggle(el, id) {
+  const panel = document.getElementById(id);
+  const isOpen = panel.classList.contains('visible');
+  document.querySelectorAll('.shelf-expand').forEach(p => p.classList.remove('visible'));
+  document.querySelectorAll('.shelf-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) {
+    panel.classList.add('visible');
+    el.classList.add('open');
+  }
+}
+</script>
+
+</body>
+</html>
